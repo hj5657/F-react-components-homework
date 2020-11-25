@@ -25,7 +25,7 @@ class ChatInput extends Component {
   render() {
     return (
       <footer className="ChatInput">
-        <input type="text" onChange={this.handleInputValue} />
+        <input type="text" onChange={this.handleInputValue} value={this.state.message} />
         <button type="button" onClick={this.handleChatInput}>
           Send
         </button>
