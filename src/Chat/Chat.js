@@ -28,6 +28,12 @@ class Chat extends Component {
   }
 
   setInputMessage = (message) => {
+    const customerMessage = {
+      text: message,
+      role: 'CUSTOMER',
+    };
+    let { messages } = this.state;
+    messages = messages.concat(customerMessage);
     answersData.forEach((answer) => {
       let flag = false;
       answer.tags.forEach((tag) => {
@@ -36,15 +42,11 @@ class Chat extends Component {
         }
       });
       if (flag) {
-        this.updateMessage(this.state.messages, answer);
+        messages = messages.concat(answer);
       }
     });
-  };
-
-  updateMessage = (messages, answer) => {
-    this.setState(() => {
-      const newMessages = messages.concat(answer);
-      return { messages: newMessages };
+    this.setState({
+      messages,
     });
   };
 
